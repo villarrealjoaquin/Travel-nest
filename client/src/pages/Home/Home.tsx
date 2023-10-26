@@ -3,7 +3,7 @@ import apartment1 from '/apartment1.webp';
 import apartment2 from '/apartment2.webp';
 import apartment3 from '/apartment3.webp';
 import location from '/svgs/location.svg';
-import { ApartmentSearch } from "."
+import { ApartmentCard, ApartmentSearch } from "."
 import SliderHome from './components/Slider/Slider';
 
 function Home() {
@@ -66,8 +66,10 @@ function Home() {
           </div>
         </div>
         <SliderHome title='travel everywhere' containerClassNames="z-10 bg-white" />
+        <ApartmentCard />
     </main>
   );
 }
 
 export default Home;
+

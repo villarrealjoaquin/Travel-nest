@@ -1,6 +1,7 @@
 import { SearchIcon } from "../..";
 
 function ApartmentSearch() {
+  
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   }
