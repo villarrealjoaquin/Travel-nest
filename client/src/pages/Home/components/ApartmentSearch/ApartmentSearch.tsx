@@ -7,8 +7,8 @@ function ApartmentSearch() {
 
   return (
     <>
-      <section className="flex justify-center ">
-        <form onSubmit={handleSubmit} className="flex items-center border border-black rounded-full px-4 gap-2">
+      <section className="flex justify-center relative top-10">
+        <form onSubmit={handleSubmit} className="flex items-center border border-black rounded-full px-4 gap-2 z-50 bg-white">
           <div className="flex flex-col border-r border-black pl-5 py-3">
             <label className="font-bold">Lugar</label>
             <input className="focus:border-transparent focus:outline-none" type="text" placeholder="Explora destinos" />
