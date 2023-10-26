@@ -3,7 +3,7 @@ import apartment1 from '/apartment1.webp';
 import apartment2 from '/apartment2.webp';
 import apartment3 from '/apartment3.webp';
 import location from '/svgs/location.svg';
-import { ApartmentSearch } from "."
+import { ApartmentCard, ApartmentSearch } from "."
 import SliderHome from './components/Slider/Slider';
 
 function Home() {
@@ -52,7 +52,7 @@ function Home() {
             key={apartment.id}
             src={apartment.image}
             alt=''
-            className={`absolute top-10 left-0 w-full h-[700px] transition-opacity duration-500 ${index === currentApartmentIndex ? 'opacity-100' : 'opacity-0'
+            className={`absolute top-[214px] left-0 w-full h-[700px] transition-opacity duration-500 ${index === currentApartmentIndex ? 'opacity-100' : 'opacity-0'
               }`}
             style={{ zIndex: index === currentApartmentIndex ? 1 : 0 }}
           />
@@ -65,7 +65,10 @@ function Home() {
           </div>
         </div>
       </div>
-      <SliderHome title='travel everywhere' containerClassNames="z-10 bg-white"/>
+      <SliderHome title='travel everywhere' containerClassNames="z-10 bg-white" />
+      <ApartmentCard />
     </main>
   );
 }
+
+export default Home
