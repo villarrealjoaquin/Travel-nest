@@ -3,6 +3,7 @@ import apartment1 from '/apartment1.webp';
 import apartment2 from '/apartment2.webp';
 import apartment3 from '/apartment3.webp';
 import location from '/svgs/location.svg';
+import { ApartmentSearch } from "."
 import SliderHome from './components/Slider/Slider';
 
 function Home() {
@@ -43,6 +44,7 @@ function Home() {
 
   return (
     <main>
+      <ApartmentSearch />
       <div className='flex flex-col justify-center mt-10'>
         <div className="w-full h-[700px] bg-black opacity-40 z-10"></div>
         {apartments.map((apartment, index) => (
@@ -67,5 +69,3 @@ function Home() {
     </main>
   );
 }
-
-export default Home;
