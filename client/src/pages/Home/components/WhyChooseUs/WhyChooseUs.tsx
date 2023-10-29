@@ -1,8 +1,6 @@
-
-
 export const WhyChooseUs = () => {
   return (
-    <>
+    <section className='overflow-hidden'>
       <div className="relative top-[200px] right-[60px] w-[400px] h-[23px] bg-[#FF385C] rotate-[-40deg]"></div>
       <div className="relative top-[150px] left-[2px] w-[400px] h-[23px] bg-[#DF405D] rotate-[-40deg]"></div>
       <div className="flex items-center gap-14 justify-center mt-32">
@@ -22,7 +20,6 @@ export const WhyChooseUs = () => {
       </div>
       <div className="relative top-[-20px] left-[1580px] w-[400px] h-[23px] bg-[#FF385C] rotate-[-40deg]"></div>
       <div className="relative top-[30px] left-[1520px] w-[400px] h-[23px] bg-[#DF405D] rotate-[-40deg] mb-[200px]"></div>
-    </>
-
+    </section>
   )
 }

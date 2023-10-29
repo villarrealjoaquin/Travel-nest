@@ -1,5 +1,5 @@
-import { apartmentsData } from '../../../../constants/index.ts'
-import { Start } from '../Icons/Icons.tsx'
+import { apartmentsData } from '../../../../constants/index.ts';
+import { Start } from '../Icons/Icons.tsx';
 
 function ApartmentCard() {
   return (
@@ -10,7 +10,7 @@ function ApartmentCard() {
           {apartmentsData.map((apartment, i) => (
             <li
               key={`${apartment.title} - ${i}`}
-              className='flex flex-col w-[20%] gap-2 h-[550px]'
+              className='flex flex-col justify-evenly w-[20%] h-[550px]'
             >
               <img
                 src={apartment.image}
