@@ -1,3 +1,4 @@
+import { t } from "i18next"
 
 
 export const WhyChooseUs = () => {
@@ -6,13 +7,9 @@ export const WhyChooseUs = () => {
       <div className="relative top-[200px] right-[60px] w-[400px] h-[23px] bg-[#FF385C] rotate-[-40deg]"></div>
       <div className="relative top-[150px] left-[2px] w-[400px] h-[23px] bg-[#DF405D] rotate-[-40deg]"></div>
       <div className="flex items-center gap-14 justify-center mt-32">
-        <div>
-          <h3 className="text-[4rem] text-[#FF385C]">¿Por que elegirnos?</h3>
-          <p className="text-[1.5rem] max-w-xl text-center">ofrecemos una combinación única de habilidades técnicas,
-            pasión por la hospitalidad y valores alineados con Airbnb.
-            Estamos comprometidos en ayudar a la empresa a crecer, mantener
-            a los usuarios felices y fomentar experiencias auténticas en todo el mundo.
-          </p>
+        <div className="flex items-center flex-col">
+          <h3 className="text-[4rem] text-[#FF385C]">{t('home.whyChooseUsTitle')}</h3>
+          <p className="text-[1.5rem] max-w-xl text-center">{t('home.whyChooseUsText')}</p>
         </div>
         <div>
           <svg width="400" height="356" viewBox="0 0 400 356" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,5 +1,21 @@
 {
+    "navbar": {
+        "post": "Pone tu publicación",
+        "place": "Lugar",
+        "travellers": "Viajeros",
+        "explore": "Explora destinos",
+        "when": "¿Cuándo?",
+        "howMany": "¿Cuántos?"
+    },
     "home": {
-        "discoverUs": "Descubre nuestros descuentos ocultos"
+        "homeTitle": "tu hogar en cualquier lugar, descubre, conecta, vive.",
+        "discoverUs": "Descubre nuestros descuentos ocultos",
+        "whyChooseUsTitle": "¿Por que elegirnos?",
+        "whyChooseUsText": "ofrecemos una combinación única de habilidades técnicas, pasión por la hospitalidad y valores alineados con Airbnb. Estamos comprometidos en ayudar a la empresa a crecer, mantener a los usuarios felices y fomentar experiencias auténticas en todo el mundo."
+    },
+    "apartments": {
+        "1": "1 ambiente con terraza.",
+        "2": "2 ambientes",
+        "3": "3 ambientes con piscina."
     }
 }
