@@ -69,12 +69,11 @@ function Home() {
         </div>
       </div>
       <SliderHome title='travel everywhere' containerClassNames="z-10 bg-white" />
+      <ApartmentCard />
       <section className='overflow-hidden'>
         <WhyChooseUs />
       </section>
       <Form />
-       <SliderHome title='travel everywhere' containerClassNames="z-10 bg-white" />
-       <ApartmentCard />
     </main>
   );
 }
