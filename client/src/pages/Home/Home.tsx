@@ -6,6 +6,7 @@ import location from '/svgs/location.svg';
 import { ApartmentSearch } from "."
 import SliderHome from './components/Slider/Slider';
 import { WhyChooseUs } from './components/WhyChooseUs/WhyChooseUs';
+import Form from './components/FormDiscounts/Form'
 
 function Home() {
 
@@ -70,7 +71,7 @@ function Home() {
       <section className='overflow-hidden'>
         <WhyChooseUs />
       </section>
-
+      <Form />
     </main>
   );
 }
