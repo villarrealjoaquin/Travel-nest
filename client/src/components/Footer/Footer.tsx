@@ -1,5 +1,3 @@
-import { ParticlesBackground } from ".."
-
 function Footer() {
   return (
     <div className="">

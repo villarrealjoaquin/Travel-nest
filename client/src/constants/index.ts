@@ -1,4 +1,7 @@
 import images from "../assets/images/Homecards";
+import apartment1 from '/apartment1.webp';
+import apartment2 from '/apartment2.webp';
+import apartment3 from '/apartment3.webp';
 
 export const apartmentsData = [
   {
@@ -50,3 +53,24 @@ export const apartmentsData = [
     image: images.depto8
   },
 ]
+
+export const apartments = [
+  {
+    id: 1,
+    image: apartment1,
+    info: "1 ambient apartment & terrace.",
+    highlighted: "Malasia"
+  },
+  {
+    id: 2,
+    image: apartment2,
+    info: "3 ambient apartment & pool.",
+    highlighted: "Chicago"
+  },
+  {
+    id: 3,
+    image: apartment3,
+    info: "2 ambient apartment.",
+    highlighted: "Noruega"
+  }
+];
