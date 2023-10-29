@@ -7,6 +7,7 @@ import { ApartmentSearch } from "."
 import SliderHome from './components/Slider/Slider';
 import { WhyChooseUs } from './components/WhyChooseUs/WhyChooseUs';
 import Form from './components/FormDiscounts/Form'
+import { t } from 'i18next';
 
 function Home() {
 
@@ -14,19 +15,19 @@ function Home() {
     {
       id: 1,
       image: apartment1,
-      info: "1 ambient apartment & terrace.",
+      info: t('apartments.1'),
       highlighted: "Malasia"
     },
     {
       id: 2,
       image: apartment2,
-      info: "3 ambient apartment & pool.",
+      info: t('apartments.3'),
       highlighted: "Chicago"
     },
     {
       id: 3,
       image: apartment3,
-      info: "2 ambient apartment.",
+      info: t('apartments.2'),
       highlighted: "Noruega"
     }
   ];
@@ -60,7 +61,7 @@ function Home() {
           />
         ))}
         <div className='flex flex-col absolute top-[50%] left-[5%] z-20'>
-          <span className='text-white text-[4rem] max-w-4xl mb-5 font-bold'>tu hogar en cualquier lugar, descubre, conecta, vive.</span>
+          <span className='text-white text-[4rem] max-w-4xl mb-5 font-bold'>{t('home.homeTitle')}</span>
           <div className='flex items-center'>
             <img src={location} alt="" className='text-black' width={40} />
             <p className='text-white text-[1.4rem]  pl-2'>{currentApartment.info} <span className='font-bold'>{currentApartment.highlighted}</span></p>

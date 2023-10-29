@@ -1,5 +1,21 @@
 {
+    "navbar": {
+        "post": "Add your post",
+        "place": "Place",
+        "travellers": "Travellers",
+        "explore": "Explore Destinations",
+        "when": "when?",
+        "howMany": "How many?"
+    },
     "home": {
-        "discoverUs": "Discover our ocult discounts"
+        "homeTitle": "Your home everywhere, discover, connect, live.",
+        "discoverUs": "Discover our ocult discounts",
+        "whyChooseUsTitle": "¿Why choose us?",
+        "whyChooseUsText": "We offer a unique combination of technical habilities, passionate of hospitality and value aligned with Airbnb. We are compromised to help the enterprise to grow up, keep the users happy and foment worldwide authentic experiences"
+    },
+    "apartments": {
+        "1": "1 ambient apartment & terrace.",
+        "2": "2 ambient apartment.",
+        "3": "3 ambient apartment & pool."
     }
 }
