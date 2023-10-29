@@ -1,5 +1,6 @@
 import { Footer, Navbar } from "./components"
 import { Home } from "./pages"
+import './i18n'
 
 function App() {
   return (
