@@ -9,7 +9,6 @@ import { WhyChooseUs } from './components/WhyChooseUs/WhyChooseUs';
 import Form from './components/FormDiscounts/Form'
 
 function Home() {
-
   const apartments = [
     {
       id: 1,
@@ -30,6 +29,7 @@ function Home() {
       highlighted: "Noruega"
     }
   ];
+
   const [currentApartmentIndex, setCurrentApartmentIndex] = useState(0);
 
   useEffect(() => {
@@ -78,5 +78,4 @@ function Home() {
   );
 }
 
-export default Home;
-
+export default Home
