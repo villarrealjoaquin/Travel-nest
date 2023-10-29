@@ -7,7 +7,6 @@ import { ApartmentCard, ApartmentSearch } from "."
 import SliderHome from './components/Slider/Slider';
 
 function Home() {
-
   const apartments = [
     {
       id: 1,
@@ -28,6 +27,7 @@ function Home() {
       highlighted: "Noruega"
     }
   ];
+
   const [currentApartmentIndex, setCurrentApartmentIndex] = useState(0);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ function Home() {
             key={apartment.id}
             src={apartment.image}
             alt=''
-            className={`absolute top-[214px] left-0 w-full h-[700px] transition-opacity duration-500 ${index === currentApartmentIndex ? 'opacity-100' : 'opacity-0'
+            className={`absolute top-10 left-0 w-full h-[700px] transition-opacity duration-500 ${index === currentApartmentIndex ? 'opacity-100' : 'opacity-0'
               }`}
             style={{ zIndex: index === currentApartmentIndex ? 1 : 0 }}
           />
@@ -65,10 +65,9 @@ function Home() {
           </div>
         </div>
       </div>
-      <SliderHome title='travel everywhere' containerClassNames="z-10 bg-white" />
+      <SliderHome title='travel everywhere' containerClassNames="z-10 bg-white"/>
       <ApartmentCard />
     </main>
   );
 }
-
-export default Home
+export default Home;

@@ -1,4 +1,4 @@
-import { Global, UserIcon } from "."
+import { Global, UserIcon } from ".."
 
 function Navbar() {
   return (
