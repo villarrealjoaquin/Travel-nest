@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { apartments } from '../../../../constants';
 import location from '/svgs/location.svg';
+import { t } from 'i18next';
 
 function ApparmentHero() {
   const [currentApartmentIndex, setCurrentApartmentIndex] = useState(0);
@@ -31,7 +32,7 @@ function ApparmentHero() {
         />
       ))}
       <div className='flex flex-col absolute top-[50%] left-[5%] z-20'>
-        <span className='text-white text-[4rem] max-w-4xl mb-5 font-bold'>tu hogar en cualquier lugar, descubre, conecta, vive.</span>
+        <span className='text-white text-[4rem] max-w-4xl mb-5 font-bold'>{t('home.homeTitle')}</span>
         <div className='flex items-center'>
           <img src={location} alt="" className='text-black' width={40} />
           <p className='text-white text-[1.4rem]  pl-2'>{currentApartment.info} <span className='font-bold'>{currentApartment.highlighted}</span></p>

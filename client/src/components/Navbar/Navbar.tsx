@@ -15,5 +15,7 @@ function Navbar() {
         </section>
       </nav>
     </header>
-)
+  )
+}
+
 export default Navbar;
