@@ -1,16 +1,11 @@
-import Particles from 'react-tsparticles';
-// import particlesConfig from "../../config/particles.config";
-import type { Container, Engine } from "tsparticles-engine";
-import { loadSlim } from "tsparticles-slim";
 import { useCallback } from 'react';
+import Particles from 'react-tsparticles';
+import type { Engine } from "tsparticles-engine";
+import { loadSlim } from "tsparticles-slim";
 
 function ParticlesBackground() {
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
-  }, []);
-
-  const particlesLoaded = useCallback(async (container: Container | undefined) => {
-    console.log(container);
   }, []);
 
   return (
@@ -18,19 +13,18 @@ function ParticlesBackground() {
       id="tsparticles"
       className='particles'
       init={particlesInit}
-      loaded={particlesLoaded}
-      height={'100'}
       options={{
+        fullScreen: { enable: false },
         background: {
           color: {
-            value: "#fefdff",
+            value: "#fff",
           },
         },
         fpsLimit: 60,
         interactivity: {
           events: {
             onClick: {
-              enable: true,
+              enable: false,
               mode: "push",
             },
             onHover: {
@@ -44,20 +38,20 @@ function ParticlesBackground() {
               quantity: 4,
             },
             repulse: {
-              distance: 200,
-              duration: 0.4,
+              distance: 100,
+              duration: 50,
             },
           },
         },
         particles: {
           color: {
-            value: "#ffffff",
+            value: "#FF385C",
           },
           links: {
-            color: "#ffffff",
+            color: "#FF385C",
             distance: 150,
             enable: true,
-            opacity: 0.5,
+            opacity: 1,
             width: 1,
           },
           move: {
@@ -67,7 +61,7 @@ function ParticlesBackground() {
               default: "bounce",
             },
             random: false,
-            speed: 6,
+            speed: 2,
             straight: false,
           },
           number: {
@@ -75,7 +69,7 @@ function ParticlesBackground() {
               enable: true,
               area: 800,
             },
-            value: 80,
+            value: 100,
           },
           opacity: {
             value: 0.5,

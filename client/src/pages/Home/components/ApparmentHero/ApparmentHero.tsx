@@ -18,14 +18,14 @@ function ApparmentHero() {
   const currentApartment = apartments[currentApartmentIndex];
 
   return (
-    <div className='flex flex-col justify-center'>
+    <section className='flex flex-col justify-center'>
       <div className="w-full h-[700px] bg-black opacity-40 z-10"></div>
       {apartments.map((apartment, index) => (
         <img
           key={apartment.id}
           src={apartment.image}
           alt=''
-          className={`absolute top-[175px] left-0 w-full h-[700px] transition-opacity duration-500 ${index === currentApartmentIndex ? 'opacity-100' : 'opacity-0'
+          className={`absolute top-[170px] left-0 w-full h-[700px] transition-opacity duration-500 ${index === currentApartmentIndex ? 'opacity-100' : 'opacity-0'
             }`}
           style={{ zIndex: index === currentApartmentIndex ? 1 : 0 }}
         />
@@ -37,7 +37,7 @@ function ApparmentHero() {
           <p className='text-white text-[1.4rem]  pl-2'>{currentApartment.info} <span className='font-bold'>{currentApartment.highlighted}</span></p>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 export default ApparmentHero
