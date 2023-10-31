@@ -9,3 +9,18 @@
 }
 
 
+.particles{
+  height: 350px;
+}
+
+.user-dropdown {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.user-dropdown.open {
+  opacity: 1;
+  max-height: 200px; /* Ajusta la altura máxima según tus necesidades */
+}
