@@ -14,7 +14,7 @@ function Form() {
         <input placeholder="First Name" type="text" className="text-[1.2rem] text-white focus:outline-none bg-transparent border-b lg:text-[1.5rem]"></input>
         <input placeholder="Last Name" type="text" className="text-[1.2rem] text-white  focus:outline-none bg-transparent border-b lg:text-[1.5rem]"></input>
         <input placeholder="email" type="text" className="text-[1.2rem] text-white focus:outline-none bg-transparent border-b lg:text-[1.5rem]"></input>
-        <Button name='Join' />
+        <Button name='Join' className="w-40 bg-white rounded-full p-2 font-bold text-[1.5rem] ml-10 mt-4 tracking-widest"/>
     </section>
   )
 }

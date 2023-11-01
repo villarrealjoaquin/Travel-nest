@@ -1,10 +1,14 @@
 interface Props{
     name: string;
+    className: any;
+    icon?: any;
+    IconClassname?: any;
 }
 
 function Button(props: Props) {
     return (
-    <button className="w-40 bg-white rounded-full p-2 font-bold text-[1.5rem] ml-10 mt-4 tracking-widest">
+    <button className={props?.className}>
+        <img src={props?.icon} alt="" className={props?.IconClassname}/>
         {props?.name}
     </button>
 )
