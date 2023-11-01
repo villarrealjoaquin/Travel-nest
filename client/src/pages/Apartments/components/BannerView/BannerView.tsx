@@ -5,11 +5,11 @@ function BannerView({ apartment }: { apartment: Apartment }) {
   return (
     <>
       <section className="">
-        <h2 className="text-xl font-medium mb-1">{apartment.title}</h2>
+        <h2 className="text-xl font-bold mb-1">{apartment.title}</h2>
         <article className="flex justify-between">
           <div className="flex items-center gap-2">
             <Star />
-            <p> 4,96 - 25 evaluaciones - <span>Buenos Aires, Argentina</span></p>
+            <p> 4,96 - 0 evaluaciones - <span className="font-bold">Buenos Aires, Argentina</span></p>
           </div>
           <article className="flex gap-2">
             <div className="flex items-center gap-1">

@@ -1,4 +1,4 @@
-import { t } from "i18next"
+import { t } from "i18next";
 import { Global, UserDropdown } from "..";
 import { Link } from "react-router-dom";
 
@@ -11,8 +11,10 @@ function Navbar() {
         </Link>
         <section className="flex items-center justify-center gap-5">
           <article className="flex gap-3">
-            <h3 className="text-center text-lg">{t('navbar.post')}</h3>
-            <Global />
+            <Link to={'/'} className="flex items-center gap-2">
+              <h3 className="text-center text-lg">{t('navbar.post')}</h3>
+              <Global />
+            </Link>
           </article>
           <UserDropdown />
         </section>

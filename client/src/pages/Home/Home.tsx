@@ -1,17 +1,15 @@
 import {
   ApartmentCard,
-  ApartmentExplorer,
-  ApartmentSearch,
   ApparmentHero,
   Form,
   WhyChooseUs,
+  ApartmentExplorer
 } from ".";
 import SliderHome from "./components/Slider/Slider";
 
 function Home() {
   return (
     <main>
-      <ApartmentSearch />
       <ApparmentHero />
       <SliderHome />
       <ApartmentCard />

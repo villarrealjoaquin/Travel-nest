@@ -1,7 +1,8 @@
 import { Footer, Navbar } from "./components";
-import { ApartmentDetail, Home, Login, Register } from "./pages";
+import { Home, Login, Register } from "./pages";
 import { Route, Routes } from "react-router-dom";
-import { PUBLIC_ROUTES } from "./utils";
+import { PUBLIC_ROUTES } from "./models/routes";
+import ApartmentDetail from "./pages/Apartments/Apartments";
 import './i18n';
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
         <Route path={PUBLIC_ROUTES.HOME} element={<Home />} />
         <Route path={`${PUBLIC_ROUTES.APARMENTS}/:id`} element={<ApartmentDetail />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </>
   )
 }

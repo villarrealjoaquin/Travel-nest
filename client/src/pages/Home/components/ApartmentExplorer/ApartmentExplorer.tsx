@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Map } from "../..";
 import { Button } from "../../../../components";
-import { PUBLIC_ROUTES } from "../../../../utils";
+import { PUBLIC_ROUTES } from "../../../../models/routes";
 
 function ApartmentExplorer() {
   return (

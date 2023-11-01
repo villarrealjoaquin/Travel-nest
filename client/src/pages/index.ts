@@ -1,8 +1,14 @@
-export { default as ApartmentDetail } from './Apartments/Apartments';
+export { default as ApartmentInfoLeft } from './Apartments/components/ApartmentInfoLeft/ApartmentInfoLeft';
+export { default as ApartmentInfoRight } from './Apartments/components/ApartmentInfoRight/ApartmentInfoRight';
+export { default as BannerView } from './Apartments/components/BannerView/BannerView';
+export { default as FeedbackWidget } from './Apartments/components/FeedbackWidget/FeedbackWidget';
+export * from './Apartments/components/icons/icons';
+export * from './Apartments';
+export * from './Apartments/models/apartment.model';
+export { default as ApparmentHero } from './Home/components/AparmentHero/ApparmentHero';
 export { default as ApartmentCard } from './Home/components/ApartmentCard/ApartmentCard';
 export { default as ApartmentExplorer } from './Home/components/ApartmentExplorer/ApartmentExplorer';
 export { default as ApartmentSearch } from './Home/components/ApartmentSearch/ApartmentSearch';
-export { default as ApparmentHero } from './Home/components/ApparmentHero/ApparmentHero';
 export { default as Form } from './Home/components/FormDiscounts/Form';
 export * from './Home/components/Icons/Icons';
 export { default as Slider } from './Home/components/Slider/Slider';

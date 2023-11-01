@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

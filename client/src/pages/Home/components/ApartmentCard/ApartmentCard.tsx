@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { apartmentsData } from '../../../../constants/index.ts';
 import { Star } from '../Icons/Icons.tsx';
-import { PUBLIC_ROUTES } from '../../../../utils/routes.ts';
+import { PUBLIC_ROUTES } from '../../../../models/routes.ts';
 
 function ApartmentCard() {
   return (

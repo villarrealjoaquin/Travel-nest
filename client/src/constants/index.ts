@@ -1,7 +1,11 @@
+import { t } from "i18next";
 import images from "../assets/images/Homecards";
 import apartment1 from '/apartment1.webp';
 import apartment2 from '/apartment2.webp';
 import apartment3 from '/apartment3.webp';
+import mobileApartment1 from '/mobileApartment1.webp';
+import mobileApartment2 from '/mobileApartment2.webp';
+import mobileApartment3 from '/mobileApartment3.webp';
 
 export const apartmentsData = [
   {
@@ -66,19 +70,34 @@ export const apartments = [
   {
     id: 1,
     image: apartment1,
-    info: "1 ambient apartment & terrace.",
+    info: t('apartments.1'),
     highlighted: "Malasia"
   },
   {
     id: 2,
     image: apartment2,
-    info: "3 ambient apartment & pool.",
+    info: t('apartments.2'),
     highlighted: "Chicago"
   },
   {
     id: 3,
     image: apartment3,
-    info: "2 ambient apartment.",
+    info: t('apartments.3'),
     highlighted: "Noruega"
   }
 ];
+
+export const mobileApartments = [
+    {
+      id: 1,
+      image: mobileApartment1,
+    },
+    {
+      id: 2,
+      image: mobileApartment2,
+    },
+    {
+      id: 3,
+      image: mobileApartment3,
+    }
+]
