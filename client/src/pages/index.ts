@@ -1,4 +1,6 @@
+export { default as ApartmentDetail } from './Apartments/Apartments';
 export { default as ApartmentCard } from './Home/components/ApartmentCard/ApartmentCard';
+export { default as ApartmentExplorer } from './Home/components/ApartmentExplorer/ApartmentExplorer';
 export { default as ApartmentSearch } from './Home/components/ApartmentSearch/ApartmentSearch';
 export { default as ApparmentHero } from './Home/components/ApparmentHero/ApparmentHero';
 export { default as Form } from './Home/components/FormDiscounts/Form';

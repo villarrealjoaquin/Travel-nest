@@ -10,7 +10,9 @@ function Form() {
         <input placeholder="Last Name" type="text" className="text-[1.5rem] text-white  focus:outline-none bg-transparent border-b ml-20"></input>
         <input placeholder="email" type="text" className="text-[1.5rem] text-white focus:outline-none bg-transparent border-b ml-20"></input>
       </div>
-      <Button name='Join' />
+      <Button className="w-40 bg-white rounded-full p-2 font-bold text-[1.5rem] ml-10 mt-4 tracking-widest">
+        Join
+      </Button>
     </section>
   )
 }

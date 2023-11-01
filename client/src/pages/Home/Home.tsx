@@ -1,5 +1,6 @@
 import {
   ApartmentCard,
+  ApartmentExplorer,
   ApartmentSearch,
   ApparmentHero,
   Form,
@@ -14,6 +15,7 @@ function Home() {
       <ApparmentHero />
       <SliderHome />
       <ApartmentCard />
+      <ApartmentExplorer />
       <WhyChooseUs />
       <Form />
     </main>
