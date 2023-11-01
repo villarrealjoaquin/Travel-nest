@@ -7,36 +7,36 @@ function ApartmentSearch() {
   };
 
   return (
-    <section className="flex justify-center relative top-10">
+    <section className="flex justify-center">
       <form onSubmit={handleSubmit} className="flex items-center border border-black rounded-full px-4 gap-2 z-50 bg-white">
         <div className="flex flex-col border-r border-black pl-5 py-3">
-          <label className="font-bold">{t('navbar.place')}</label>
+          <label className="font-bold text-[0.8rem]">{t('navbar.place')}</label>
           <input
-            className="focus:border-transparent focus:outline-none"
+            className="focus:border-transparent focus:outline-none text-[0.8rem]"
             type="text"
             placeholder={t('navbar.explore')}
           />
         </div>
-        <div className="flex flex-col border-r border-black py-3">
+        <div className="flex flex-col border-r border-black py-3 text-[0.8rem]">
           <label className="font-bold">Check in</label>
           <input
-            className="focus:border-transparent focus:outline-none"
+            className="focus:border-transparent focus:outline-none text-[0.8rem]"
             type="text"
             placeholder={t('navbar.when')}
           />
         </div>
-        <div className="flex flex-col border-r border-black py-3">
+        <div className="flex flex-col border-r border-black py-3 text-[0.8rem]">
           <label className="font-bold">Check out</label>
           <input
-            className="focus:border-transparent focus:outline-none"
+            className="focus:border-transparent focus:outline-none text-[0.8rem]"
             type="text"
             placeholder={t('navbar.when')}
           />
         </div>
         <div className="flex flex-col py-3">
-          <label className="font-bold">{t('navbar.travellers')}</label>
+          <label className="font-bold text-[0.8rem]">{t('navbar.travellers')}</label>
           <input
-            className="focus:border-transparent focus:outline-none"
+            className="focus:border-transparent focus:outline-none text-[0.8rem]"
             type="text"
             placeholder={t('navbar.howMany')}
           />
