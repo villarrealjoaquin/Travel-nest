@@ -5,7 +5,6 @@ import { PUBLIC_ROUTES } from "../../../../models/routes";
 
 function ApartmentExplorer() {
   return (
-    <>
       <div className='flex justify-center items-center my-3'>
         <Link to={PUBLIC_ROUTES.APARTMENTS}>
           <Button
@@ -15,7 +14,6 @@ function ApartmentExplorer() {
           </Button>
         </Link>
       </div>
-    </>
   )
 }
 export default ApartmentExplorer;
