@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import {
-  Apartment,
   ApartmentInfoLeft,
   ApartmentInfoRight,
   BannerView,
@@ -11,10 +10,9 @@ import { apartmentsData } from "../../constants";
 function ApartmentDetail() {
   const { id } = useParams();
   const castToNumber = id ? parseInt(id) : 1;
-  const apartment: Apartment = apartmentsData[castToNumber];
+  const apartment: any = apartmentsData[castToNumber];
 
   return (
-    <>
       <main className="w-full grid place-content-center">
         <BannerView apartment={apartment} />
         <div className="flex gap-5 w-full">
@@ -23,7 +21,6 @@ function ApartmentDetail() {
         </div>
         <FeedbackWidget />
       </main>
-    </>
   )
 }
 export default ApartmentDetail;

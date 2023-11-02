@@ -11,11 +11,11 @@ export const UserIcon = () => (
 )
 
 export const Hamburguer = () => (
-  <>
+  <div>
     <div className="w-5 h-px bg-black my-1"></div>
     <div className="w-5 h-px bg-black my-1"></div>
     <div className="w-5 h-px bg-black my-1"></div>
-  </>
+  </div>
 )
 
 export const Github = () => (

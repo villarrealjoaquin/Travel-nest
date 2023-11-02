@@ -5,6 +5,7 @@ export { default as FeedbackWidget } from './Apartments/components/FeedbackWidge
 export * from './Apartments/components/icons/icons';
 export * from './Apartments';
 export * from './Apartments/models/apartment.model';
+export { default as ApartmentsDirectory } from './ApartmentsDirectory/ApartmentsDirectory';
 export { default as ApparmentHero } from './Home/components/AparmentHero/ApparmentHero';
 export { default as ApartmentCard } from './Home/components/ApartmentCard/ApartmentCard';
 export { default as ApartmentExplorer } from './Home/components/ApartmentExplorer/ApartmentExplorer';
