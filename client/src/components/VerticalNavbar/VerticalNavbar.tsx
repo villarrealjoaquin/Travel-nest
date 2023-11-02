@@ -122,11 +122,10 @@ function VerticalNavbar() {
           <img src={arrowDown} alt="" className="w-[10px]" />
         </button>
         <Button
-          name='Filtros'
           className='flex flex-col items-center text-[#FF385C] border border-[#FF385C] p-2 w-[80px] rounded-3xl'
-          icon={filter}
-          IconClassname='w-[40px]'
-        />
+        >
+          Filtros
+        </Button>
         <UserDropdown className="cursor-pointer flex items-center border-2 hover:shadow-lg rounded-full px-3 py-1 gap-2" />
       </nav>
     </header>

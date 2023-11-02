@@ -1,15 +1,30 @@
-import { ApartmentCard } from "..";
-import { VerticalNavbar } from "../../components";
+import { useParams } from "react-router-dom";
+import {
+  Apartment,
+  ApartmentInfoLeft,
+  ApartmentInfoRight,
+  BannerView,
+  FeedbackWidget
+} from ".";
+import { apartmentsData } from "../../constants";
 
-function Apartments() {
+function ApartmentDetail() {
+  const { id } = useParams();
+  const castToNumber = id ? parseInt(id) : 1;
+  const apartment: any = apartmentsData[castToNumber];
+
   return (
-    <section className="flex items-start pb-5">
-      <VerticalNavbar />
-      <div className="w-full mt-10">
-        <ApartmentCard />
-      </div>
-    </section>
-  );
+    <>
+      <main className="w-full grid place-content-center">
+        <BannerView apartment={apartment} />
+        <div className="flex gap-5 w-full">
+          <ApartmentInfoLeft />
+          <ApartmentInfoRight apartment={apartment} />
+        </div>
+        <FeedbackWidget />
+      </main>
+    </>
+  )
 }
+export default ApartmentDetail;
 
-export default Apartments;

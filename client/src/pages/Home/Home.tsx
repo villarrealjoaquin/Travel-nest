@@ -3,6 +3,7 @@ import {
   ApparmentHero,
   Form,
   WhyChooseUs,
+  ApartmentExplorer
 } from ".";
 import { Navbar } from "../../components";
 import SliderHome from "./components/Slider/Slider";
@@ -14,6 +15,7 @@ function Home() {
       <ApparmentHero />
       <SliderHome />
       <ApartmentCard />
+      <ApartmentExplorer />
       <WhyChooseUs />
       <Form />
     </main>

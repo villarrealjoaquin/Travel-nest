@@ -1,17 +1,22 @@
-interface Props{
-    name: string;
-    className: any;
-    icon?: any;
-    IconClassname?: any;
+import { ButtonHTMLAttributes } from "react";
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  type?: 'button' | 'submit' | 'reset';
+  className: string;
+  children: React.ReactNode;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-function Button(props: Props) {
-    return (
-    <button className={props?.className}>
-        <img src={props?.icon} alt="" className={props?.IconClassname}/>
-        {props?.name}
+function Button({ className, type, onClick, children, ...attributes }: ButtonProps) {
+  return (
+    <button
+      className={className}
+      type={type}
+      onClick={onClick}
+      {...attributes}
+    >
+      {children}
     </button>
-)
+  )
 }
-
 export default Button;
