@@ -11,8 +11,8 @@ import { apartmentsData } from "../../constants";
 function ApartmentDetail() {
   const { id } = useParams();
   const castToNumber = id ? parseInt(id) : 1;
-  const apartment: Apartment = apartmentsData[castToNumber];
-
+  const apartment: Apartment = apartmentsData[castToNumber + 1];
+  
   return (
     <>
       <main className="w-full grid place-content-center">
