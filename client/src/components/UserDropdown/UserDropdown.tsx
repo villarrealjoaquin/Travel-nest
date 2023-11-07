@@ -3,7 +3,7 @@ import { useShowModal } from "../../Hooks";
 import { useLocation } from "react-router-dom";
 
 interface Props{
-  className: any;
+  className: string;
 }
 
 function UserDropdown(props: Props) {

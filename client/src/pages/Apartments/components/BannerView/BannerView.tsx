@@ -1,7 +1,7 @@
 import { Apartment, Heart, Share } from "../.."
 import { Star } from "../../.."
 
-function BannerView({ apartment }: { apartment: Apartment }) {
+function BannerView({ apartment }: { apartment: Omit<Apartment, 'id'> }) {
   return (
     <>
       <section className="">
