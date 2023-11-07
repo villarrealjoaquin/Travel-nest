@@ -18,14 +18,14 @@ function ApparmentHero() {
 
   const isMobile = window.innerWidth < 500;
 
-  const currentApartment = isMobile ? mobileApartments[currentApartmentIndex] : apartments[currentApartmentIndex];
+  const currentApartment: any = isMobile ? mobileApartments[currentApartmentIndex] : apartments[currentApartmentIndex];
 
   return (
     <section className='flex flex-col justify-center'>
       <div className="w-full h-[500px] bg-black opacity-40 z-10 xl:h-[700px] lg:h-[700px] md:h-[700px] sm:h-[700px]"></div>
-      {isMobile ? mobileApartments.map((apartment: { image: string | undefined; }, index: number) => (
+      {isMobile ? mobileApartments.map((apartment: { image: string | undefined, id: number }, index: number) => (
         <img
-          key={mobileApartments.id}
+          key={apartment.id}
           src={apartment.image}
           alt='mobile-apartment-image'
           className={`absolute left-0 w-full h-[500px] transition-opacity duration-500 ${index === currentApartmentIndex ? 'opacity-100' : 'opacity-0'

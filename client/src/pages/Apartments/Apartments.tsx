@@ -1,29 +1,30 @@
 import { useParams } from "react-router-dom";
 import {
   Apartment,
+  ApartmentContainerInfo,
   ApartmentInfoLeft,
   ApartmentInfoRight,
   BannerView,
-  FeedbackWidget
+  FeedbackWidget,
+  LocationApartment
 } from ".";
 import { apartmentsData } from "../../constants";
 
 function ApartmentDetail() {
   const { id } = useParams();
   const castToNumber = id ? parseInt(id) : 1;
-  const apartment: Apartment = apartmentsData[castToNumber + 1];
-  
+  const apartment: Omit<Apartment, 'id'> = apartmentsData[castToNumber];
+
   return (
-    <>
-      <main className="w-full grid place-content-center">
-        <BannerView apartment={apartment} />
-        <div className="flex gap-5 w-full">
-          <ApartmentInfoLeft />
-          <ApartmentInfoRight apartment={apartment} />
-        </div>
-        <FeedbackWidget />
-      </main>
-    </>
+    <main className="w-full grid place-content-center">
+      <BannerView apartment={apartment} />
+      <ApartmentContainerInfo>
+        <ApartmentInfoLeft />
+        <ApartmentInfoRight apartment={apartment} />
+      </ApartmentContainerInfo>
+      <FeedbackWidget />
+      <LocationApartment />
+    </main>
   )
 }
 export default ApartmentDetail;

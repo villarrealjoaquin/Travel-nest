@@ -3,9 +3,10 @@ import { Global, UserDropdown } from "..";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+
   return (
-    <header className="w-full sticky top-0 bg-white z-50">
-      <nav className="flex flex-col items-center justify-between px-10 py-5 sm:flex-row">
+    <header className="sticky top-0 z-50">
+      <nav className="flex flex-col items-center w-full bg-white justify-between px-10 py-5 sm:flex-row">
         <Link to='/'>
           <h2 className="text-[#FF385C] text-[2rem] font-medium sm:text-[2.5rem]">TravelNest</h2>
         </Link>
@@ -16,7 +17,7 @@ function Navbar() {
               <Global />
             </Link>
           </article>
-          <UserDropdown />
+          <UserDropdown className="cursor-pointer flex items-center border-2 hover:shadow-lg rounded-3xl px-3 py-1 gap-2"/>
         </section>
       </nav>
     </header>
