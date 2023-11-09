@@ -16,7 +16,7 @@ function App() {
         <Route path={PUBLIC_ROUTES.HOME} element={<Home />} />
         <Route path={`${PUBLIC_ROUTES.APARTMENTS}/:id`} element={<ApartmentDetail />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }
