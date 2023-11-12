@@ -17,5 +17,13 @@
         "1": "1 ambient apartment & terrace.",
         "2": "2 ambient apartment & kitchen.",
         "3": "3 ambient apartment & pool."
+    },
+    "register": {
+      "signIn": "Sign in",
+      "signInWithGoogle": "Sign in with google"
+    },
+    "login": {
+      "login": "Login",
+      "loginWithGoogle": "Login with google"
     }
 }
