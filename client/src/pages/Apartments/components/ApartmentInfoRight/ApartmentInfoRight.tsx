@@ -4,7 +4,7 @@ import { Button } from "../../../../components";
 import { Star } from "../../..";
 import { Link } from "react-router-dom";
 
-function ApartmentInfoRight({ apartment }: { apartment: Apartment }) {
+function ApartmentInfoRight({ apartment }: { apartment: Omit<Apartment, 'id'> }) {
   return (
     <>
       <section className="w-1/2 my-2 flex flex-col justify-between">

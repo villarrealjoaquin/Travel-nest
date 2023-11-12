@@ -2,8 +2,8 @@ import { Hamburguer, UserIcon } from "..";
 import { useShowModal } from "../../Hooks";
 import { Link, useLocation } from "react-router-dom";
 
-interface Props {
-  className: any;
+interface Props{
+  className: string;
 }
 
 function UserDropdown(props: Props) {

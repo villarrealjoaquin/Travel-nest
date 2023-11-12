@@ -1,9 +1,7 @@
-import { Link } from 'react-router-dom';
-import { Button } from '../../../../components/index.ts';
+import { Link, useLocation } from 'react-router-dom';
 import { apartmentsData } from '../../../../constants/index.ts';
-import { useLocation } from 'react-router-dom';
-import { Star } from '../Icons/Icons.tsx';
 import { PUBLIC_ROUTES } from '../../../../models/routes.ts';
+import { Star } from '../Icons/Icons.tsx';
 
 function ApartmentCard() {
   const location = useLocation()
