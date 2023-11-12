@@ -17,5 +17,13 @@
       "1": "1 ambiente con terraza.",
       "2": "2 ambientes",
       "3": "3 ambientes con piscina."
+  },
+  "register": {
+    "signIn": "Registrate",
+    "signInWithGoogle": "Registrate con google"
+  },
+  "login": {
+    "login": "Logueate",
+    "loginWithGoogle": "Logueate con google"
   }
 }
