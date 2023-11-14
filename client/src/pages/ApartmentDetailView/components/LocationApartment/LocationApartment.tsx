@@ -8,6 +8,7 @@ const mapStyles = {
 const mapOptions = {
   disableDefaultUI: true,
   zoomControl: true,
+  scrollwheel:true
 };
 
 function LocationApartment() {

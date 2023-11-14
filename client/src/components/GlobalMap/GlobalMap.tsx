@@ -1,12 +1,22 @@
 import { GoogleMap, MarkerF, useLoadScript } from "@react-google-maps/api";
-import { MapOptions, MapStyle } from "../../models/map.model";
+
+interface MapStyle {
+  width: string;
+  height: string;
+}
+
+interface MapOptions {
+  disableDefaultUI: boolean;
+  zoomControl: boolean;
+  scrollwheel: boolean;
+}
 
 function GlobalMap({ styles, options }: { styles: MapStyle, options: MapOptions }) {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API,
   });
 
-  if (!isLoaded) return <div>Loading...</div>;
+  if (!isLoaded) return <div>Loading...</div>
 
   return (
     <>
