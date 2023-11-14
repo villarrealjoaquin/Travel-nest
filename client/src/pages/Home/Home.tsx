@@ -5,7 +5,7 @@ import {
   WhyChooseUs,
   ApartmentExplorer
 } from ".";
-import { Navbar } from "../../components";
+import { Footer, Navbar } from "../../components";
 import SliderHome from "./components/Slider/Slider";
 
 function Home() {
@@ -18,6 +18,7 @@ function Home() {
       <ApartmentExplorer />
       <WhyChooseUs />
       <Form />
+      <Footer />
     </main>
   );
 }
