@@ -13,7 +13,7 @@ function ApartmentCard() {
         {location.pathname === '/' && apartmentsData.slice(0, 8).map((apartment, i) => (
           <Link to={`${PUBLIC_ROUTES.APARTMENTS}/${apartment?.id}`} key={`${apartment.title} - ${i}`}>
             <li
-              className='flex flex-col justify-around h-[500px]'
+              className='flex flex-col gap-3 h-[500px]'
             >
               <img
                 src={apartment.image}
@@ -26,7 +26,7 @@ function ApartmentCard() {
                   <Star /> 4.93
                 </div>
               </div>
-              <p className='w-[350px] text-sm'>{apartment.description}</p>
+              <p className='w-[400px] text-sm line-clamp-2'>{apartment.description}</p>
               <p><span className='font-bold h-[100px]'>${apartment.price}</span> noche</p>
             </li>
           </Link>

@@ -1,10 +1,10 @@
-import { Experiencie, Key, WorkPlace } from "../..";
 import { Avatar, AvatarFallback, AvatarImage } from "../../../../components/ui/avatar";
+import { Experiencie, Key, WorkPlace } from "../icons/icons";
 
 function ApartmentInfoLeft() {
   return (
     <>
-      <section className="w-1/2 flex flex-col mt-3 ">
+      <section className="w-[80%] lg:w-1/2 flex flex-col mt-3 ">
         <article className="py-4">
           <div className="flex items-center justify-between">
             <div>

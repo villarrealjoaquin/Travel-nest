@@ -1,5 +1,4 @@
-import { Apartment, Heart, Share } from "../.."
-import { Star } from "../../.."
+import { Apartment, Heart, Share, Star } from "../../.."
 
 function BannerView({ apartment }: { apartment: Omit<Apartment, 'id'> }) {
   return (

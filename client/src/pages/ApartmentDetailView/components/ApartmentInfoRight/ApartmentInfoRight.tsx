@@ -1,13 +1,12 @@
-import { Apartment, ReportApartment } from "../..";
 import { DatePickerWithRange } from "../../../../components/ui/DatePicketWithRange";
 import { Button } from "../../../../components";
-import { Star } from "../../..";
+import { Apartment, ReportApartment, Star } from "../../..";
 import { Link } from "react-router-dom";
 
 function ApartmentInfoRight({ apartment }: { apartment: Omit<Apartment, 'id'> }) {
   return (
     <>
-      <section className="w-1/2 my-2 flex flex-col justify-between">
+      <section className="w-[80%] lg:w-1/2 my-2 flex flex-col justify-between">
         <article className='flex justify-between items-center my-5'>
           <h2><span className="font-bold">${apartment.price} USD</span> noche</h2>
           <div className="flex items-center gap-3">
