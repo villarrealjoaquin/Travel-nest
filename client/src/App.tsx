@@ -16,7 +16,7 @@ function App() {
         <Route path={`${PUBLIC_ROUTES.APARTMENTS}/:id`} element={<ApartmentDetailView />} />
         <Route path={PRIVATE_ROUTES.PUBLISH} element={<PublishApartment />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }
