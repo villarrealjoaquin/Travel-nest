@@ -1,26 +1,23 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { DatabaseModule } from './database/database.module';
-import { config } from './config/config';
 import { AuthModule } from './auth/auth.module';
+import { config } from './config/config';
+import { DatabaseModule } from './database/database.module';
 import { UserModule } from './user/user.module';
 import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal:true,
+      isGlobal: true,
       load: [config]
     }),
-    JwtModule.register({
-      secret: 'your-secret-key', 
-      signOptions: { expiresIn: '1h' }, 
-    }),
+    // JwtModule.register({secret: process.env.JWT_SECRET}),
     DatabaseModule,
     AuthModule,
-    UserModule
+    UserModule,
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }

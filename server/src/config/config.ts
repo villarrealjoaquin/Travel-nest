@@ -11,5 +11,8 @@ export const config = (): ConfigProps => ({
       connectionString: process.env.MONGODB_CONNECTION || 'mongodb://localhost:27017',
       databaseName: process.env.NODE_ENV || 'local'
     }
+  },
+  jwt: {
+    secret: process.env.JWT_SECRET || 'clave_secreta'
   }
 });

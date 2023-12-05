@@ -17,3 +17,15 @@ export class Login {
 export class GenerateToken {
   email:string;
 }
+
+export class Signup {
+  name: string;
+  lastname:string;
+  email:string;
+  password:string;
+}
+
+export class Signin {
+  email:string;
+  password:string;
+}
