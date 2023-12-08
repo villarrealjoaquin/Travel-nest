@@ -1,8 +1,7 @@
-import { Footer } from "./components";
-import { Home, Login, Register, ApartmentsDirectory, PublishApartment, ApartmentDetailView } from "./pages";
 import { Route, Routes } from "react-router-dom";
-import { PRIVATE_ROUTES, PUBLIC_ROUTES } from "./models/routes";
 import './i18n';
+import { PRIVATE_ROUTES, PUBLIC_ROUTES } from "./models/routes";
+import { ApartmentDetailView, ApartmentsDirectory, Home, Login, PublishApartment, Register } from "./pages";
 
 function App() {
   return (

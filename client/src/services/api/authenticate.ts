@@ -1,7 +1,5 @@
-import instance from './axios.config';
+import { User } from "../../models";
+import instance from "./axios.config";
 
-const api = {
-  loginRequest: (user) => instance.post('/login', user)
-}
-
-export default api;
+export const loginRequest = (user: User) => instance.post('auth/login', user);
+export const registerRequest = (user: User) => instance.post('auth/signup', user);

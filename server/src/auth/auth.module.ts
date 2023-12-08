@@ -17,12 +17,11 @@ import { UserModule } from 'src/user/user.module';
         signOptions: { expiresIn: '60s' }
       })
     }),
-    // JwtModule.register({secret: process.env.JWT_SECRET}),
     DatabaseModule,
     UserModule
   ],
   controllers: [AuthController],
-  providers: [AuthService, UserService, JwtService],
+  providers: [AuthService, UserService],
   exports: [AuthService]
 })
 export class AuthModule {}
