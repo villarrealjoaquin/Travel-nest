@@ -5,6 +5,7 @@ import google from '/svgs/google.svg';
 import { useLocation } from 'react-router-dom';
 import { registerRequest } from '../../services/api/authenticate';
 import { User } from '../../models';
+import { LocalStorageKeys, saveInLocalStorage } from '../../utils';
 
 interface Props {
   googleButtonName: string;
@@ -24,6 +25,8 @@ function ContentRegistration({ googleButtonName, button }: Props) {
     e.preventDefault();
     try {
       const res = await registerRequest(data);
+      saveInLocalStorage(LocalStorageKeys.TOKEN, res.data.accessToken);
+      saveInLocalStorage(LocalStorageKeys.REFRESH_TOKEN, res.data.refreshToken);
       console.log(res);
     } catch (error) {
       console.log('estoy en el catch');

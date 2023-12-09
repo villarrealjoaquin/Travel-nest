@@ -14,5 +14,7 @@ export const config = (): ConfigProps => ({
   },
   jwt: {
     secret: process.env.JWT_SECRET || 'clave_secreta'
-  }
+  },
+  JWT_ACCESS_SECRET: 'secret_access_token',
+  JWT_REFRESH_SECRET: 'secret_refresh_token'
 });
