@@ -1,19 +1,32 @@
-import { Injectable, NotFoundException, UnauthorizedException } from "@nestjs/common";
+import { BadRequestException, Injectable, NotFoundException, UnauthorizedException } from "@nestjs/common";
 import { GenerateToken, Signin, Signup } from "../dto/auth.dto";
 import { JwtService } from "@nestjs/jwt";
 import * as bcrypt from 'bcrypt';
 import { UserService } from "src/user/service/user.service";
+import { ConfigService } from "@nestjs/config";
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly jwtService: JwtService,
     private readonly userService: UserService,
-  ) { }
+    private readonly configService: ConfigService,
+  ) {}
 
-  async generateToken(payload: GenerateToken) {
-    const token = await this.jwtService.signAsync(payload);
-    return token;
+  async generateTokens(payload: GenerateToken) {
+    const [accessToken, refreshToken] = await Promise.all([
+      this.jwtService.signAsync(
+        payload,
+      ),
+      this.jwtService.signAsync(
+        payload,
+      ),
+    ]);
+
+    return {
+      accessToken,
+      refreshToken,
+    };
   }
 
   async verifyToken(token: string): Promise<any> {
@@ -22,6 +35,10 @@ export class AuthService {
 
   public async signup(user: Signup) {
     const { password, email } = user;
+    const userExists = await this.userService.findOne(email);
+    if (userExists) {
+      throw new BadRequestException('User already exists');
+    }
     const saltOrRounds = 10;
     const passwordHashed = await bcrypt.hash(password, saltOrRounds);
     const createUser = {
@@ -31,14 +48,12 @@ export class AuthService {
 
     await this.userService.createUser(createUser);
 
-    const payload = {
-      email
-    };
-
-    const token = await this.generateToken(payload);
+    const payload = { email };
+    const { accessToken, refreshToken } = await this.generateTokens(payload);
 
     return {
-      token,
+      accessToken,
+      refreshToken,
       email
     }
   }
@@ -54,7 +69,7 @@ export class AuthService {
     }
 
     const payload = { email: findUser.email };
-    const token = this.generateToken(payload);
+    const token = this.generateTokens(payload);
     return {
       token,
       email: findUser.email

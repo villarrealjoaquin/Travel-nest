@@ -17,4 +17,6 @@ export interface ConfigProps {
   jwt: {
     secret:string
   }
+  JWT_ACCESS_SECRET:string
+  JWT_REFRESH_SECRET:string
 }
