@@ -1,7 +1,8 @@
-import { Body, Controller, Get, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res, UnauthorizedException, UseGuards } from '@nestjs/common';
+import { Response } from 'express';
 import { CreateUserDto, Login } from '../dto/auth.dto';
 import { AuthService } from '../service/auth.service';
-import { Response } from 'express';
+import { AuthGuard } from 'src/guards';
 
 @Controller('auth')
 export class AuthController {
@@ -10,13 +11,46 @@ export class AuthController {
   @Post('signup')
   async register(@Body() body: CreateUserDto, @Res({ passthrough: true }) res: Response) {
     const { accessToken, refreshToken, email } = await this.authService.signup(body);
-    res.cookie('access_token', accessToken, { httpOnly: true });
-    res.cookie('refresh_token', refreshToken, { httpOnly: true });
+    const accessTokenExpiresIn = 60;
+    const refreshTokenExpiresIn = 180;
+
+    res.cookie('access_token', accessToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'strict'
+      // expires: new Date(Date.now() + accessTokenExpiresIn * 1000)
+    });
+    res.cookie('refresh_token', refreshToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'strict' 
+      // expires: new Date(Date.now() + refreshTokenExpiresIn * 1000)
+    });
     return { accessToken, refreshToken, email };
   }
 
   @Get('login')
-  async signIn(@Body() body: Login) {
+  async signIn(@Body() body: Login, @Res({ passthrough: true }) res: Response) {
+    const { accessToken, refreshToken } = await this.authService.signup(body);
+    const accessTokenExpiresIn = 60;
+    const refreshTokenExpiresIn = 180;
+
+    res.cookie('access_token', accessToken, { httpOnly: true, expires: new Date(Date.now() + accessTokenExpiresIn * 1000) });
+    res.cookie('refresh_token', refreshToken, { httpOnly: true, expires: new Date(Date.now() + refreshTokenExpiresIn * 1000) });
     return this.authService.signin(body);
   }
+
+  @UseGuards(AuthGuard)
+  @Post('refresh')
+  async refreshToken(@Body() refreshToken: string, @Req() request: Request) {
+    try {
+      const newTokens = await this.authService.refreshTokens(refreshToken);
+      return newTokens;
+    } catch (error) {
+      throw new UnauthorizedException('Invalid refresh token');
+    }
+  }
+
+  @Get('verify')
+  async verifyToken() { }
 }

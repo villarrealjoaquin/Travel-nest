@@ -4,14 +4,14 @@ import { PUBLIC_ROUTES } from '../../../../models/routes.ts';
 import { Star } from '../Icons/Icons.tsx';
 
 function ApartmentCard() {
-  const location = useLocation()
+  const location = useLocation();
 
   return (
     <section className='flex flex-col justify-center items-center'>
       {location.pathname === '/' && <h2 className='text-[#FF385C] text-center my-7 text-3xl'>Asi que... cual elegiras?</h2>}
       <ul className='grid w-full grid-cols-[repeat(auto-fit,minmax(400px,1fr))] place-items-center'>
         {location.pathname === '/' && apartmentsData.slice(0, 8).map((apartment, i) => (
-          <Link to={`${PUBLIC_ROUTES.APARTMENTS}/${apartment?.id}`} key={`${apartment.title} - ${i}`}>
+          <Link to={`${PUBLIC_ROUTES.APARTMENTS}/${apartment?.id}`} key={`${apartment.title} - ${i}`} >
             <li
               className='flex flex-col gap-3 h-[500px]'
             >

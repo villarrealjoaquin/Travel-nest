@@ -6,6 +6,7 @@ import { UserService } from 'src/user/service/user.service';
 import { UserModule } from 'src/user/user.module';
 import { AuthController } from './controller/auth.controller';
 import { AuthService } from './service/auth.service';
+import { AuthGuard } from 'src/guards';
 
 @Module({
   imports: [
@@ -14,14 +15,16 @@ import { AuthService } from './service/auth.service';
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
         secret: config.get<string>('jwt.secret'),
-        signOptions: { expiresIn: '60s' }
-      })
+        signOptions: {
+          expiresIn: '1h', 
+        },
+      }),
     }),
     DatabaseModule,
     UserModule
   ],
   controllers: [AuthController],
-  providers: [AuthService, UserService],
+  providers: [AuthService, UserService, AuthGuard],
   exports: [AuthService]
 })
 export class AuthModule {}

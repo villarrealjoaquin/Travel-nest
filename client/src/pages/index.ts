@@ -21,6 +21,7 @@ export * from './Home';
 export { default as Login } from './Login/Login';
 export { default as ApartmentFeaturesForm } from './PublishApartment/components/ApartmentFeaturesForm/ApartmentFeaturesForm';
 export { default as ApartmentImageUploader } from './PublishApartment/components/ApartmentImageUploader/ApartmentImageUploader';
+export { default as PublishApartmentMap } from './PublishApartment/components/PublishApartmentMap/PublishApartmentMap';
 export { default as ResidentialCategoryPicker } from './PublishApartment/components/ResidentialCategoryPicker/ResidentialCategoryPicker';
 export * from './PublishApartment/components';
 export * from './PublishApartment';

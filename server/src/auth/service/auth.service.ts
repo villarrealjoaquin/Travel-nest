@@ -1,56 +1,33 @@
-import { BadRequestException, Injectable, NotFoundException, UnauthorizedException } from "@nestjs/common";
-import { GenerateToken, Signin, Signup } from "../dto/auth.dto";
+import { BadRequestException, ForbiddenException, Injectable, NotFoundException, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import * as bcrypt from 'bcrypt';
 import { UserService } from "src/user/service/user.service";
-import { ConfigService } from "@nestjs/config";
+import { GenerateToken, Signin, Signup } from "../dto/auth.dto";
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly jwtService: JwtService,
     private readonly userService: UserService,
-    private readonly configService: ConfigService,
-  ) {}
+  ) { }
 
-  async generateTokens(payload: GenerateToken) {
-    const [accessToken, refreshToken] = await Promise.all([
-      this.jwtService.signAsync(
-        payload,
-      ),
-      this.jwtService.signAsync(
-        payload,
-      ),
-    ]);
-
-    return {
-      accessToken,
-      refreshToken,
-    };
-  }
-
-  async verifyToken(token: string): Promise<any> {
-    return this.jwtService.verifyAsync(token);
-  }
-
-  public async signup(user: Signup) {
+  async signup(user: Signup) {
     const { password, email } = user;
     const userExists = await this.userService.findOne(email);
     if (userExists) {
       throw new BadRequestException('User already exists');
     }
     const saltOrRounds = 10;
-    const passwordHashed = await bcrypt.hash(password, saltOrRounds);
+    const passwordHashed = await this.hashData(password, saltOrRounds);
     const createUser = {
       ...user,
       password: passwordHashed
     };
-
     await this.userService.createUser(createUser);
 
     const payload = { email };
     const { accessToken, refreshToken } = await this.generateTokens(payload);
-
+    // await this.updateRefreshToken(createUser._id, refreshToken);
     return {
       accessToken,
       refreshToken,
@@ -58,7 +35,12 @@ export class AuthService {
     }
   }
 
-  public async signin(user: Signin) {
+  // async updateRefreshToken(userId: string, refreshToken: string) {
+  //   const hashedRefreshToken = await this.hashData(refreshToken, 10);
+  //   await this.userService.update(userId, { refreshToken: hashedRefreshToken });
+  // }
+
+  async signin(user: Signin) {
     const { email, password } = user;
     const findUser = await this.userService.findOne(email);
     if (!findUser) throw new NotFoundException('User not found');
@@ -74,5 +56,36 @@ export class AuthService {
       token,
       email: findUser.email
     }
+  }
+
+  hashData(data: string, saltOrRounds: number) {
+    return bcrypt.hash(data, saltOrRounds);
+  }
+
+  async generateTokens(payload: GenerateToken) {
+    const [accessToken, refreshToken] = await Promise.all([
+      this.jwtService.signAsync(payload, { expiresIn: '1m' }),
+      this.jwtService.signAsync(payload, { expiresIn: '30m' }),
+    ]);
+
+    return {
+      accessToken,
+      refreshToken,
+    };
+  }
+
+  async verifyToken(token: string): Promise<any> {
+    return this.jwtService.verifyAsync(token);
+  }
+
+  async refreshTokens(refresh: string) {
+    console.log('entre refresh');
+
+    const decodedRefreshToken = this.jwtService.verifyAsync(refresh, { secret: process.env.JWT_REFRESH_TOKEN });
+    console.log(decodedRefreshToken);
+    if(!decodedRefreshToken) throw new UnauthorizedException('invalid credentials');
+
+    const newToken = this.jwtService.signAsync({}, {secret: process.env.JWT_ACCESS_SECRET});
+
   }
 } 

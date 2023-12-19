@@ -1,4 +1,5 @@
 import { ApartmentCard } from "..";
+import { useTokenRefresh } from "../../Hooks/useTokenRefresh";
 import { GlobalMap, VerticalNavbar } from "../../components";
 
 const mapStyles = {
@@ -13,6 +14,7 @@ const mapOptions = {
 };
 
 function ApartmentsDirectory() {
+  useTokenRefresh();
   return (
     <>
       <section className="flex items-start pb-5">

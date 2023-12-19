@@ -3,7 +3,7 @@ import styles from './slider.module.css'
 
 const SliderHome = () => {
   return (
-    <div
+    <section
       className={`${styles['logo-container']} border-b-solid border-2 border-b-red-500  border-t-solid border-t-red-500 py-2 lg:py-4 z-10 bg-white  `}
     >
       <div className={`${styles['logo-slide']} ${styles['logo-content']} mx-4 items-center gap-44`}>
@@ -16,7 +16,7 @@ const SliderHome = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   )
 }
 export default SliderHome;

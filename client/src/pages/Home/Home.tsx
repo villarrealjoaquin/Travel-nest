@@ -5,10 +5,12 @@ import {
   WhyChooseUs,
   ApartmentExplorer
 } from ".";
+import { useTokenRefresh } from "../../Hooks/useTokenRefresh";
 import { Footer, Navbar } from "../../components";
 import SliderHome from "./components/Slider/Slider";
 
 function Home() {
+  useTokenRefresh();
   return (
     <main>
       <Navbar />
