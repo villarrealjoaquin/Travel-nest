@@ -1,8 +1,3 @@
-export enum LocalStorageKeys {
-  REFRESH_TOKEN = "refreshToken",
-  TOKEN = "token",
-}
-
 export const saveInLocalStorage = (key: string, value: string) => {
   localStorage.setItem(key, value);
 };

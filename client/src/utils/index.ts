@@ -1,1 +1,1 @@
-export * from './helpers/local-storage-manager';
+export * from './helpers';

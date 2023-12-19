@@ -10,11 +10,14 @@ import {
 } from "..";
 import { apartmentsData } from "../../constants";
 import { Navbar } from "../../components";
+import { useTokenRefresh } from "../../Hooks/useTokenRefresh";
 
 function ApartmentDetailView() {
   const { id } = useParams();
   const castToNumber = id ? parseInt(id) : 1;
   const apartment: Omit<Apartment, 'id'> = apartmentsData[castToNumber];
+  useTokenRefresh();
+
 
   return (
     <>

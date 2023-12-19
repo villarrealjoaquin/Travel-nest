@@ -1,5 +1,4 @@
 export { default as Button } from './Button';
-export { default as ContentRegistration } from './ContentRegistration/ContentRegistration';
 export { default as Footer } from './Footer/Footer';
 export { default as GlobalMap } from './GlobalMap/GlobalMap';
 export { default as Navbar } from './Navbar/Navbar';
@@ -9,8 +8,11 @@ export { default as VerticalNavbar } from './VerticalNavbar/VerticalNavbar';
 export * from './icons/icons';
 export * from './ui/DatePicketWithRange';
 export * from './ui/Input';
+export * from './ui/InputFile';
 export * from './ui/avatar';
 export * from './ui/button';
 export * from './ui/calendar';
+export * from './ui/checkbox';
 export * from './ui/popover';
+export * from './ui/select';
 export * from './ui/textarea';
