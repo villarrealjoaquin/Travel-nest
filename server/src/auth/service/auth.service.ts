@@ -87,9 +87,12 @@ export class AuthService {
       const decodedRefreshToken = await this.jwtService.verifyAsync(refresh, { secret: this.configService.get<string>('jwt.secret') });
       if (!decodedRefreshToken) throw new UnauthorizedException('invalid credentials');
 
-      const newToken = await this.jwtService.signAsync({}, { secret: process.env.JWT_ACCESS_SECRET });
+      const newToken = await this.jwtService.signAsync({}, { 
+        secret: this.configService.get<string>('jwt.secret') ,
+        expiresIn: '5m'
+      });
+
       console.log(newToken);
-      
       return newToken;
     } catch (error) {
       console.log(error);

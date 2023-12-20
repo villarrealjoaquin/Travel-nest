@@ -7,7 +7,7 @@ import { RefreshTokenGuard } from 'src/guards/refreshToken.guard';
 
 interface ExtendsRequest extends Request {
   cookies: { [key: string]: string }
-} 
+}
 
 @Controller('auth')
 export class AuthController {
@@ -28,7 +28,7 @@ export class AuthController {
     res.cookie('refresh_token', refreshToken, {
       httpOnly: true,
       secure: true,
-      sameSite: 'strict' 
+      sameSite: 'strict'
       // expires: new Date(Date.now() + refreshTokenExpiresIn * 1000)
     });
     return { accessToken, refreshToken, email };
@@ -47,22 +47,22 @@ export class AuthController {
 
   @UseGuards(RefreshTokenGuard)
   @Post('refresh')
-  async refreshToken(@Body() refreshToken: string, @Req() request: ExtendsRequest, @Res() res: Response) {
+  async refreshToken(@Body() refreshToken: string, @Req() request: ExtendsRequest, @Res({ passthrough: true }) res: Response) {
     const refreshTokenFromCookie = request.cookies['refresh_token'];
 
-    console.log('entre controller refresh');
-    
+    console.log('entre controller refresh', refreshTokenFromCookie);
+
     try {
-      console.log(refreshToken, 'refresh token controller');
       const newToken = await this.authService.refreshTokens(refreshTokenFromCookie);
       console.log(newToken, 'new token');
-
       
-      res.cookie('access_token2', newToken, {
-        httpOnly: true,
-        secure: true,
-        sameSite: 'strict'
-      });
+      console.log(typeof newToken === 'string');
+      try {
+        res.cookie('access_token', newToken);
+        console.log('Cookie access_token2 establecida correctamente');
+      } catch (error) {
+        console.error('Error al establecer la cookie access_token2:', error);
+      }
 
       return newToken;
     } catch (error) {

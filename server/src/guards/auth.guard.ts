@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const token = request.cookies['access_token'];
-    // console.log(token);
+    console.log(token);
     console.log(request.headers);
     if (!token) return false;
 
@@ -21,11 +21,12 @@ export class AuthGuard implements CanActivate {
       // console.log('paseeeee');
       
       const decodedToken = await this.jwtService.verifyAsync(token, { secret: this.configService.get<string>('jwt.secret') });
-      // console.log(decodedToken, 'pase 2');
+      console.log(decodedToken, 'pase 2');
       request.user = decodedToken;
       return true;
     } catch (error) {
       console.error('Error al verificar el token:', error);
+      console.log('pase 2');
       return false;
     }
   }

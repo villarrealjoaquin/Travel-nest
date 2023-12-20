@@ -16,6 +16,8 @@ function PublishApartment() {
       const res = await instance.get('/publishApartment');
       console.log(res);
     } catch (error) {
+      console.log('aca');
+      
       console.log(error);
     }
   }

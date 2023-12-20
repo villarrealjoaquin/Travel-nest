@@ -12,7 +12,7 @@ export class RefreshTokenGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const refreshToken = request.cookies['refresh_token'];
-    console.log(refreshToken, 'refresh_token');
+    // console.log(refreshToken, 'refresh_token');
 
     if (!refreshToken) return false;
 
@@ -20,6 +20,8 @@ export class RefreshTokenGuard implements CanActivate {
       const decodedRefreshToken = await this.jwtService.verifyAsync(refreshToken, {
         secret: this.confiService.get<string>('jwt.secret')
       })
+      // console.log(decodedRefreshToken, 'decodificado');
+      
       if(!decodedRefreshToken) return false;
       request.user = decodedRefreshToken;
       return true
