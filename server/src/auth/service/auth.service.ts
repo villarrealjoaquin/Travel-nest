@@ -3,12 +3,14 @@ import { JwtService } from "@nestjs/jwt";
 import * as bcrypt from 'bcrypt';
 import { UserService } from "src/user/service/user.service";
 import { GenerateToken, Signin, Signup } from "../dto/auth.dto";
+import { ConfigService } from "@nestjs/config";
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly jwtService: JwtService,
     private readonly userService: UserService,
+    private readonly configService: ConfigService
   ) { }
 
   async signup(user: Signup) {
@@ -81,11 +83,16 @@ export class AuthService {
   async refreshTokens(refresh: string) {
     console.log('entre refresh');
 
-    const decodedRefreshToken = this.jwtService.verifyAsync(refresh, { secret: process.env.JWT_REFRESH_TOKEN });
-    console.log(decodedRefreshToken);
-    if(!decodedRefreshToken) throw new UnauthorizedException('invalid credentials');
+    try {
+      const decodedRefreshToken = await this.jwtService.verifyAsync(refresh, { secret: this.configService.get<string>('jwt.secret') });
+      if (!decodedRefreshToken) throw new UnauthorizedException('invalid credentials');
 
-    const newToken = this.jwtService.signAsync({}, {secret: process.env.JWT_ACCESS_SECRET});
-
+      const newToken = await this.jwtService.signAsync({}, { secret: process.env.JWT_ACCESS_SECRET });
+      console.log(newToken);
+      
+      return newToken;
+    } catch (error) {
+      console.log(error);
+    }
   }
 } 

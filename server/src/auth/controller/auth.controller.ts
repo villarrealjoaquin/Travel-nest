@@ -1,8 +1,13 @@
-import { Body, Controller, Get, Post, Req, Res, UnauthorizedException, UseGuards } from '@nestjs/common';
+import { Body, Controller, ForbiddenException, Get, Post, Req, Res, UnauthorizedException, UseGuards } from '@nestjs/common';
 import { Response } from 'express';
 import { CreateUserDto, Login } from '../dto/auth.dto';
 import { AuthService } from '../service/auth.service';
 import { AuthGuard } from 'src/guards';
+import { RefreshTokenGuard } from 'src/guards/refreshToken.guard';
+
+interface ExtendsRequest extends Request {
+  cookies: { [key: string]: string }
+} 
 
 @Controller('auth')
 export class AuthController {
@@ -40,14 +45,29 @@ export class AuthController {
     return this.authService.signin(body);
   }
 
-  @UseGuards(AuthGuard)
+  @UseGuards(RefreshTokenGuard)
   @Post('refresh')
-  async refreshToken(@Body() refreshToken: string, @Req() request: Request) {
+  async refreshToken(@Body() refreshToken: string, @Req() request: ExtendsRequest, @Res() res: Response) {
+    const refreshTokenFromCookie = request.cookies['refresh_token'];
+
+    console.log('entre controller refresh');
+    
     try {
-      const newTokens = await this.authService.refreshTokens(refreshToken);
-      return newTokens;
+      console.log(refreshToken, 'refresh token controller');
+      const newToken = await this.authService.refreshTokens(refreshTokenFromCookie);
+      console.log(newToken, 'new token');
+
+      
+      res.cookie('access_token2', newToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'strict'
+      });
+
+      return newToken;
     } catch (error) {
-      throw new UnauthorizedException('Invalid refresh token');
+      console.log(error, 'controller refresh');
+      throw new ForbiddenException('Invalid refresh token');
     }
   }
 
