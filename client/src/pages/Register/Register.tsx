@@ -17,7 +17,6 @@ function Register() {
   const accessToken = useAuthStore(state => state.accessToken)
   const { setAccessToken, setRefreshToken } = authActions;
   const navigate = useNavigate();
-  console.log(accessToken);
 
   const handleClick = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

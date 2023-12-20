@@ -6,9 +6,20 @@ import {
 } from ".";
 import { useTokenRefresh } from "../../Hooks/useTokenRefresh";
 import { ButtonUi, Checkbox, Navbar, Textarea } from "../../components";
+import instance from "../../services/api/axios.config";
 
 function PublishApartment() {
   useTokenRefresh();
+
+  const handleClick = async () => {
+    try {
+      const res = await instance.get('/publishApartment');
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -40,7 +51,7 @@ function PublishApartment() {
               <h2 className="font-bold my-2">Desea agregar algo una descripcion</h2>
               <Textarea placeholder="Te falto agregar alguna caracteristica" />
             </article>
-            <ButtonUi className="bg-[#FF385C] font-bold">
+            <ButtonUi className="bg-[#FF385C] font-bold" onClick={handleClick}>
               Publicar alojamiento
             </ButtonUi>
           </div>
