@@ -3,11 +3,13 @@ import { Button, Input } from "../../components";
 import google from '/svgs/google.svg';
 
 function Login() {
+
+
   useTokenRefresh();
   return (
     <section className='flex justify-center mt-[160px]'>
       <div className='w-[70%] h-[600px] border-2 border-[#FF385C] rounded-3xl flex items-center justify-center  md:w-[50%] lg:w-[550px] xl:w-[70%]'>
-        <form className='xl:ml-[100px]'>
+        <form onSubmit={(e) => e.preventDefault()} className='xl:ml-[100px]'>
           <div className='flex flex-col items-center'>
             <h4 className='mb-4 text-[3rem] text-[#FF385C] font-bold'>Welcome</h4>
             <Input

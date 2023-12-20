@@ -13,9 +13,9 @@ function App() {
         <Route path={PUBLIC_ROUTES.REGISTER} element={<Register />} />
         <Route path={PUBLIC_ROUTES.APARTMENTS} element={<ApartmentsDirectory />} />
         <Route path={`${PUBLIC_ROUTES.APARTMENTS}/:id`} element={<ApartmentDetailView />} />
-        {/* <Route element={<ProtectedRoutes />}> */}
+        <Route element={<ProtectedRoutes />}>
           <Route path={PRIVATE_ROUTES.PUBLISH} element={<PublishApartment />} />
-        {/* </Route> */}
+        </Route>
       </Routes>
     </>
   )
