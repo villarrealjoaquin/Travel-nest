@@ -8,7 +8,7 @@ function App() {
   return (
     <>      
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path={PUBLIC_ROUTES.HOME} element={<Home />} />
         <Route path={PUBLIC_ROUTES.APARTMENTS} element={<ApartmentsDirectory />} />
         <Route path={PUBLIC_ROUTES.LOGIN} element={<Login />} />
         <Route path={PUBLIC_ROUTES.REGISTER} element={<Register />} />

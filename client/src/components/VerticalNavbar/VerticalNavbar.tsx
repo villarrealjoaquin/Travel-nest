@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, UserDropdown } from '..';
-import arrowUp from '/svgs/arrowUp.svg';
 import arrowDown from '/svgs/arrowDown.svg';
+import arrowUp from '/svgs/arrowUp.svg';
 
-import mansion from '/svgs/mansion.svg';
-import mountains from '/svgs/mountains.svg';
-import island from '/svgs/island.svg';
+import camping from '/svgs/camping.svg';
 import domo from '/svgs/domo.svg';
 import fire from '/svgs/fire.svg';
-import filter from '/svgs/filter.svg';
-import camping from '/svgs/camping.svg';
-import winter from '/svgs/winter.svg';
+import island from '/svgs/island.svg';
+import mansion from '/svgs/mansion.svg';
+import mountains from '/svgs/mountains.svg';
 import t from '/svgs/t.svg';
+import winter from '/svgs/winter.svg';
 
 const items = [
   {
@@ -78,7 +77,7 @@ const itemsPerPage = 7;
 function VerticalNavbar() {
   const [activeItem, setActiveItem] = useState(0);
 
-  const handleItemClick = (index: any) => {
+  const handleItemClick = (index: number) => {
     setActiveItem(index);
   };
 
