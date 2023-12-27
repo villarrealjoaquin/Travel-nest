@@ -4,8 +4,6 @@ import instance from "./axios.config";
 export const axiosInterceptor = () => {
   instance.interceptors.request.use(
     (request) => {
-      console.log(request);
-
       const token = localStorage.getItem('token');
       if (token) {
         request.headers['Authorization'] = `Bearer ${token}`;

@@ -7,19 +7,27 @@ import {
   SelectTrigger,
   SelectValue
 } from "../../../../components/ui/select";
+import { useApartmentContext } from "../../context/PublishApartment.context";
 
 function ResidentialCategoryPicker() {
+  const { handleSelectChange } = useApartmentContext();
+
+  const handleSelectChangeValue = (value: string) => {
+    handleSelectChange(value);
+    console.log(value);
+  }
+
   return (
     <>
       <article>
         <h2 className="font-bold my-2">Que propiedad quieres publicar?</h2>
-        <Select>
+        <Select onValueChange={handleSelectChangeValue} name="type_property">
           <SelectTrigger className="w-[200px]">
             <SelectValue placeholder="Selecciona propiedad" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent >
             <SelectGroup>
-              <SelectLabel>Propiedades</SelectLabel>
+              <SelectLabel >Propiedades</SelectLabel>
               <SelectItem value="casa">casa</SelectItem>
               <SelectItem value="departamento">Departamento Urbano</SelectItem>
               <SelectItem value="condominio">Condominio de Lujo</SelectItem>

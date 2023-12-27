@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Input } from '../../components';
 import { LocalStorageKeys, PUBLIC_ROUTES, User } from '../../models';
 import { registerRequest } from '../../services';
-import { authActions, useAuthStore } from '../../services/store/auth.store';
+import { authActions } from '../../services/store/auth.store';
 import { saveInLocalStorage } from '../../utils';
-import { useNavigate } from 'react-router-dom';
 import google from '/svgs/google.svg';
 
 function Register() {
@@ -14,7 +14,6 @@ function Register() {
     email: '',
     password: ''
   });
-  const accessToken = useAuthStore(state => state.accessToken)
   const { setAccessToken, setRefreshToken } = authActions;
   const navigate = useNavigate();
 
@@ -27,7 +26,7 @@ function Register() {
       setAccessToken(res.data.accessToken);
       setRefreshToken(res.data.refreshToken);
       navigate(PUBLIC_ROUTES.HOME);
-      console.log(res);
+      console.log(res.data);
     } catch (error) {
       console.log(error);
     }

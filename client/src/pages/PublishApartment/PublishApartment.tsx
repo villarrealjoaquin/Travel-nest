@@ -1,64 +1,119 @@
+import { useState } from "react";
 import {
   ApartmentFeaturesForm,
   ApartmentImageUploader,
+  DescriptionSectionApartment,
   PublishApartmentMap,
   ResidentialCategoryPicker
 } from ".";
-import { useTokenRefresh } from "../../Hooks/useTokenRefresh";
-import { ButtonUi, Checkbox, Navbar, Textarea } from "../../components";
-import instance from "../../services/api/axios.config";
+import { useTokenRefresh } from "../../Hooks";
+import { ButtonUi, Navbar } from "../../components";
+import { Apartment } from "../../models";
+import CheckboxList from "./components/CheckboxList/CheckboxList";
+import ApartmentContext from "./context/PublishApartment.context";
+import { publishApartmentRequest } from "../../services/api/publish-apartment";
+
+const initialValues = {
+  type_property: "",
+  ability: "",
+  services: "",
+  rooms: 0,
+  beds: 0,
+  price: 0,
+  segurity: false,
+  animals: false,
+  description: "",
+  ubication: "",
+  images: [],
+}
 
 function PublishApartment() {
+  const [apartmentData, setApartmentData] = useState<Apartment>(initialValues);
   useTokenRefresh();
 
-  const handleClick = async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    Object.entries(apartmentData).forEach(([key, value]) => {
+      console.log(key, value);
+  
+      if (key === 'images' && Array.isArray(value)) {
+        value.forEach((image, index) => {
+          formData.append(`image_${index + 1}`, image); 
+        });
+      } else {
+        formData.append(key, value);
+      }
+    });
+
+    console.log(formData);
+    
     try {
-      const res = await instance.get('/publishApartment');
-      console.log(res);
+      const response = await publishApartmentRequest(formData);
+      console.log(response);
     } catch (error) {
-      console.log('aca');
-      
       console.log(error);
     }
   }
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    setApartmentData({
+      ...apartmentData,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  const handleSelectChange = (value: string) => {
+    setApartmentData({
+      ...apartmentData,
+      type_property: value,
+    });
+  }
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files) {
+      setApartmentData({
+        ...apartmentData,
+        images: [...apartmentData.images, ...files],
+      });
+    }
+  };
+
+  console.log(apartmentData);
+
   return (
     <>
       <Navbar />
-      <main className="flex justify-center flex-col w-[90%] m-auto h-[750px]">
-        <h2 className="font-bold text-lg bg-[#FF385C] py-5 px-2 rounded-sm text-white">Publica tu Propiedad</h2>
-        <section className="flex justify-center gap-3 mt-5">
-          <div className="w-1/2">
-            <ResidentialCategoryPicker />
-            <ApartmentFeaturesForm />
-          </div>
-          <div className="w-1/2">
-            <div className="flex flex-col gap-3 mt-2">
-              <label className="font-bold">Se permiten animales?</label>
-              <div className="items-top flex items-center space-x-2">
-                <Checkbox id="terms1" />
-                <div className="grid gap-1.5 leading-none">
-                  <label
-                    htmlFor="terms1"
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Marcar si la respuesta es afirmativa
-                  </label>
-                </div>
-              </div>
-              <ApartmentImageUploader />
+      <ApartmentContext.Provider value={{
+        apartmentData,
+        setApartmentData,
+        handleSelectChange,
+        handleChange,
+        handleFileChange,
+      }}>
+        <main className="flex justify-center flex-col w-[90%] m-auto h-[750px]">
+          <h2 className="font-bold text-lg bg-[#FF385C] py-5 px-2 rounded-sm text-white">Publica tu Propiedad</h2>
+          <form onSubmit={handleSubmit} className="flex justify-center gap-3 mt-5">
+            <div className="w-1/2">
+              <ResidentialCategoryPicker />
+              <ApartmentFeaturesForm />
             </div>
-            <PublishApartmentMap />
-            <article className="my-2">
-              <h2 className="font-bold my-2">Desea agregar algo una descripcion</h2>
-              <Textarea placeholder="Te falto agregar alguna caracteristica" />
-            </article>
-            <ButtonUi className="bg-[#FF385C] font-bold" onClick={handleClick}>
-              Publicar alojamiento
-            </ButtonUi>
-          </div>
-        </section>
-      </main>
+            <div className="w-1/2">
+              <CheckboxList />
+              <ApartmentImageUploader />
+              <PublishApartmentMap />
+              <DescriptionSectionApartment />
+              <ButtonUi className="bg-[#FF385C] font-bold">
+                Publicar alojamiento
+              </ButtonUi>
+            </div>
+          </form>
+        </main>
+      </ApartmentContext.Provider>
     </>
   )
 }
