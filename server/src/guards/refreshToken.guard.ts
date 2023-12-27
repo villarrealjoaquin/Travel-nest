@@ -1,4 +1,4 @@
-import { CanActivate, ExecutionContext, Inject } from "@nestjs/common";
+import { CanActivate, ExecutionContext, Inject, UnauthorizedException } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
 
@@ -12,15 +12,22 @@ export class RefreshTokenGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const refreshToken = request.cookies['refresh_token'];
-    // console.log(refreshToken, 'refresh_token');
 
-    if (!refreshToken) return false;
+    console.log(refreshToken);
+    
+    if (!refreshToken) throw new UnauthorizedException('Invalid Refresh Token');;
+
+    console.log('llegue aca');
+    
 
     try {
       const decodedRefreshToken = await this.jwtService.verifyAsync(refreshToken, {
         secret: this.confiService.get<string>('jwt.secret')
       })
-      // console.log(decodedRefreshToken, 'decodificado');
+
+      if(!decodedRefreshToken) {
+        throw new UnauthorizedException('Invalid Refresh Token');
+      }
       
       if(!decodedRefreshToken) return false;
       request.user = decodedRefreshToken;

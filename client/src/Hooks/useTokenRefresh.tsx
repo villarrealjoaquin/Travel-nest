@@ -5,20 +5,16 @@ import { authActions, useAuthStore } from "../services/store/auth.store";
 
 export const useTokenRefresh = () => {
   const access_token = useAuthStore(state => state.accessToken);
-  const { setAccessToken } = authActions
-
-  console.log(access_token);
+  const { setAccessToken } = authActions;
 
   useEffect(() => {
     let isMounted = true;
 
     const request = instance.interceptors.request.use(
       (request) => {
-        console.log('Access Token:', access_token);
+        const token = window.localStorage.getItem('access_token')
 
-       const token = window.localStorage.getItem('access_token')
-
-        if (access_token) {
+        if (token) {
           request.headers['Authorization'] = `Bearer ${token}`;
         }
         return request;
@@ -32,7 +28,6 @@ export const useTokenRefresh = () => {
       },
       async (error) => {
         const originalRequest = error.config;
-        console.log(originalRequest);
 
         if (error.response.status === 403 && !originalRequest._retry) {
           originalRequest._retry = true;
@@ -40,19 +35,17 @@ export const useTokenRefresh = () => {
           try {
             const refreshToken = localStorage.getItem('refreshToken') ?? '';
             const response = await refreshTokenRequest(refreshToken);
-            // console.log(response.data, 'nuevo token');
-
             const { token } = response.data;
-            setAccessToken(token);
-            // console.log(access_token, 'verify');
 
-            localStorage.setItem('access_token', token);
-            originalRequest.headers.Authorization = `Bearer ${token}`;
-            return instance(originalRequest);
+            if (isMounted) {
+              setAccessToken(token);
+              localStorage.setItem('access_token', token);
+              originalRequest.headers.Authorization = `Bearer ${token}`;
 
+              return instance(originalRequest);
+            }
           } catch (error) {
             console.log('entro catch');
-
             console.log(error);
           }
         }

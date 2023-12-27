@@ -1,4 +1,4 @@
-export class CreateUserDto {
+export class DTOCreateUser {
   name: string;
   lastname: string;
   email: string;

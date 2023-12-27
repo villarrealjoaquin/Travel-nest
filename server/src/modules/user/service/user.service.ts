@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import { CreateUserDto, UpdateUserDto } from "../dto/user.dto";
-import { User, UserDocument } from "../schema/user.schema";
+import { User, UserDocument } from "../../../schemas/user.schema";
 import { Model } from "mongoose";
+import { DTOCreateUser, UpdateUserDto } from "../dto/user.dto";
 
 @Injectable()
 export class UserService {
@@ -12,7 +12,7 @@ export class UserService {
     return this.userModel.findOne({ email: user });
   }
 
-  async createUser(user: CreateUserDto) {
+  async createUser(user: DTOCreateUser) {
     return this.userModel.create(user);
   }
 
