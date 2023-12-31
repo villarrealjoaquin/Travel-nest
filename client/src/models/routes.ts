@@ -2,5 +2,9 @@ export const PUBLIC_ROUTES = {
   LOGIN: '/login',
   REGISTER: '/register',
   HOME: '/',
-  APARTMENTS: '/apartments'
+  APARTMENTS: '/apartments',
+}
+
+export const PRIVATE_ROUTES = {
+  PUBLISH: 'publishApartment'
 }
