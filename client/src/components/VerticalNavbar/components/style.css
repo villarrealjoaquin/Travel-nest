@@ -1,0 +1,34 @@
+/* Estilo para el pulgar del control deslizante */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #FF385C; /* Cambia a tu color preferido */
+    cursor: pointer;
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #FF385C; /* Cambia a tu color preferido */
+    cursor: pointer;
+    border-radius: 100%;
+    border: none;
+  }
+  
+  /* Estilo para la pista del control deslizante */
+  input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    background: #ddd;
+    cursor: pointer;
+  }
+  
+  input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 2px;
+    background: #ddd;
+    cursor: pointer;
+  }
+  
